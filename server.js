@@ -10,9 +10,9 @@ const PORT = process.env.PORT || 5000;
 
 // Gmail SMTP Configuration for reliable email delivery
 console.log('⚙️ Using Gmail SMTP for reliable email delivery');
-console.log('📧 Contact form emails will be forwarded to: sri.nxth@yahoo.com');
+console.log('📧 Contact form emails will be forwarded to: psrinath821@gmail.com');
 console.log(`📧 Email configured for sending from: nithiinsrinu@gmail.com`);
-console.log(`📧 Emails will be delivered to: sri.nxth@yahoo.com`);
+console.log(`📧 Emails will be delivered to: psrinath821@gmail.com`);
 
 // Middleware with CORS configuration
 const corsOptions = {
@@ -107,8 +107,8 @@ app.post('/api/contact', async (req, res) => {
 
         // Email to Srinath (portfolio owner) - Ultra Stylish Version
         const ownerMailOptions = {
-            from: `"🚀 Portfolio Notification" <nithiinsrinu@gmail.com>`,
-            to: 'sri.nxth@yahoo.com',
+            from: `"🚀 Portfolio Notification" <psrinath821@gmail.com>`,
+            to: 'psrinath821@gmail.com',
             subject: `POTHARAJU SRINATH: New Client Inquiry - ${subject}`,
             html: `
                 <!DOCTYPE html>
@@ -254,7 +254,7 @@ app.post('/api/contact', async (req, res) => {
                                 <!-- Contact Info -->
                                 <div style="background: white; padding: 20px; border-radius: 12px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid rgba(102,126,234,0.1);">
                                     <p style="margin: 0 0 10px 0; color: #374151; font-size: 14px;">
-                                        📧 <a href="mailto:nithiinsrinu@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">nithiinsrinu@gmail.com</a> • 📍 Hyderabad, India
+                                    📧 <a href="mailto:psrinath821@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">psrinath821@gmail.com</a> • 📍 Hyderabad, India
                                     </p>
                                     <p style="margin: 0; color: #6b7280; font-size: 12px;">
                                         📅 <strong>Message Received:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'full', timeStyle: 'medium' })} IST
@@ -282,7 +282,7 @@ app.post('/api/contact', async (req, res) => {
 
         // Confirmation email to the user - Ultra Stylish Version
         const userMailOptions = {
-            from: `"🚀 Srinath Potharaju" <${process.env.EMAIL_USER}>`,
+            from: `"🚀 Srinath Potharaju" <psrinath821@gmail.com>`,
             to: email,
             subject: ` Thank you ${name.split(' ')[0]}! Your message is on its way to me`,
             html: `
@@ -541,7 +541,7 @@ app.post('/api/contact', async (req, res) => {
                             <div style="background: rgba(255,255,255,0.08); backdrop-filter: blur(15px); padding: 25px; border-radius: 20px; margin: 25px 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
                                 <h5 style="margin: 0 0 15px 0; color: #f3f4f6; font-size: 16px; font-weight: 700;">Get In Touch</h5>
                                 <p style="margin: 0 0 15px 0; color: #f3f4f6; font-size: 15px;">
-                                    📧 <a href="mailto:nithiinsrinu@gmail.com" style="color: #4ecdc4; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(78,205,196,0.3);">nithiinsrinu@gmail.com</a>
+                                    📧 <a href="mailto:psrinath821@gmail.com" style="color: #4ecdc4; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(78,205,196,0.3);">psrinath821@gmail.com</a>
                                 </p>
                                 <p style="margin: 0 0 15px 0; color: #d1d5db; font-size: 14px;">
                                     📍 Based in Hyderabad, India • Available for remote & on-site projects
