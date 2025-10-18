@@ -14,8 +14,21 @@ console.log('📧 Contact form emails will be forwarded to: sri.nxth@yahoo.com')
 console.log(`📧 Email configured for sending from: nithiinsrinu@gmail.com`);
 console.log(`📧 Emails will be delivered to: sri.nxth@yahoo.com`);
 
-// Middleware
-app.use(cors());
+// Middleware with CORS configuration
+const corsOptions = {
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:5000', 
+        'http://127.0.0.1:3000',
+        'https://srinath-potharaju.onrender.com',
+        'https://srinath-potharaju.vercel.app'
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

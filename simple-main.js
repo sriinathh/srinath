@@ -337,8 +337,15 @@ function initContactForm() {
         submitBtn.disabled = true;
         
         try {
+            // Determine the correct API URL
+            const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                ? '/api/contact'  // Local development
+                : 'https://srinath-potharaju.onrender.com/api/contact';  // Production
+            
+            console.log('🌐 Using API URL:', apiUrl);
+            
             // Send to backend API
-            const response = await fetch('/api/contact', {
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
