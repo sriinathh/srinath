@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 // Gmail SMTP Configuration for reliable email delivery
 console.log('⚙️ Using Gmail SMTP for reliable email delivery');
 console.log('📧 Contact form emails will be forwarded to: psrinath821@gmail.com');
-console.log(`📧 Email configured for sending from: nithiinsrinu@gmail.com`);
+console.log(`📧 Email configured for sending from: psrinath821@gmail.com`);
 console.log(`📧 Emails will be delivered to: psrinath821@gmail.com`);
 
 // Middleware with CORS configuration
@@ -57,8 +57,8 @@ if (process.env.SENDGRID_API_KEY) {
         port: 465,
         secure: true,
         auth: {
-            user: 'nithiinsrinu@gmail.com',
-            pass: 'iqfdigdzybcsvgig'
+            user: process.env.EMAIL_USER || 'psrinath821@gmail.com',
+            pass: process.env.EMAIL_PASS || 'your_gmail_app_password_here'
         },
         tls: {
             rejectUnauthorized: false,
