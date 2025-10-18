@@ -76,7 +76,7 @@ app.post('/api/contact', async (req, res) => {
         const ownerMailOptions = {
             from: `"🚀 Portfolio Notification" <${process.env.EMAIL_USER}>`,
             to: 'nithiinsrinu@gmail.com',
-            subject: `🎯 High Priority: New Client Inquiry - ${subject}`,
+            subject: `POTHARAJU SRINATH: New Client Inquiry - ${subject}`,
             html: `
                 <!DOCTYPE html>
                 <html>
@@ -84,6 +84,17 @@ app.post('/api/contact', async (req, res) => {
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>New Portfolio Contact</title>
+                    <style>
+                        @keyframes glow {
+                            0% { box-shadow: 0 15px 50px rgba(0,0,0,0.2), 0 0 20px rgba(102,126,234,0.3); }
+                            100% { box-shadow: 0 15px 50px rgba(0,0,0,0.2), 0 0 40px rgba(102,126,234,0.6); }
+                        }
+                        @keyframes float {
+                            0% { transform: translateY(0px) rotate(0deg); }
+                            50% { transform: translateY(-10px) rotate(1deg); }
+                            100% { transform: translateY(0px) rotate(0deg); }
+                        }
+                    </style>
                 </head>
                 <body style="margin: 0; padding: 20px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); min-height: 100vh; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
                     <div style="max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.95); border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2);">
@@ -100,11 +111,19 @@ app.post('/api/contact', async (req, res) => {
                                     <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">🔥 Priority Contact</span>
                                 </div>
                                 
+<<<<<<< HEAD
                                 <!-- Profile Picture -->
                                 <div style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 25px; border: 4px solid rgba(255,255,255,0.4); box-shadow: 0 12px 40px rgba(0,0,0,0.2), inset 0 2px 0 rgba(255,255,255,0.3); overflow: hidden; position: relative;">
                                     <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Potharaju - Full Stack Developer" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) contrast(1.1);">
                                     <div style="position: absolute; top: -2px; right: -2px; width: 25px; height: 25px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
                                         ✓
+=======
+                                <!-- Dual Image Display: Logo + Profile -->
+                                
+                                    <!-- Logo Badge -->
+                                    <div style="position: absolute; bottom: -5px; right: -5px; width: 45px; height: 45px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius: 50%; border: 3px solid rgba(255,255,255,0.9); box-shadow: 0 4px 15px rgba(0,0,0,0.2); overflow: hidden; animation: pulse 2s ease-in-out infinite;">
+                                        <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+>>>>>>> 90a293d (updated5)
                                     </div>
                                 </div>
                                 
@@ -241,7 +260,7 @@ app.post('/api/contact', async (req, res) => {
         const userMailOptions = {
             from: `"🚀 Srinath Potharaju" <${process.env.EMAIL_USER}>`,
             to: email,
-            subject: `🎆 Thank you ${name.split(' ')[0]}! Your message is on its way to me`,
+            subject: ` Thank you ${name.split(' ')[0]}! Your message is on its way to me`,
             html: `
                 <!DOCTYPE html>
                 <html>
@@ -249,6 +268,30 @@ app.post('/api/contact', async (req, res) => {
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>Message Confirmation - Srinath Potharaju</title>
+                    <style>
+                        @keyframes glow {
+                            0% { box-shadow: 0 6px 25px rgba(78,205,196,0.4), 0 0 15px rgba(78,205,196,0.2); }
+                            100% { box-shadow: 0 6px 25px rgba(78,205,196,0.6), 0 0 30px rgba(78,205,196,0.4); }
+                        }
+                        @keyframes pulse {
+                            0% { transform: scale(1); }
+                            50% { transform: scale(1.08); }
+                            100% { transform: scale(1); }
+                        }
+                        @keyframes bounce {
+                            0%, 100% { transform: translateY(0); }
+                            50% { transform: translateY(-5px); }
+                        }
+                        @keyframes shimmer {
+                            0% { left: -100%; }
+                            100% { left: 100%; }
+                        }
+                        @keyframes float {
+                            0% { transform: translateY(0px) rotate(0deg); }
+                            50% { transform: translateY(-15px) rotate(2deg); }
+                            100% { transform: translateY(0px) rotate(0deg); }
+                        }
+                    </style>
                 </head>
                 <body style="margin: 0; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%, #f093fb 200%); min-height: 100vh; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
                     <div style="max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.98); border-radius: 25px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.3);">
@@ -261,11 +304,13 @@ app.post('/api/contact', async (req, res) => {
                             
                             <!-- Header Content -->
                             <div style="position: relative; z-index: 3; padding: 50px 35px; text-align: center; color: white;">
-                                <!-- Success Badge -->
-                                <div style="display: inline-block; background: rgba(255,255,255,0.25); backdrop-filter: blur(15px); padding: 10px 25px; border-radius: 30px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                                    <span style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;">✨ Message Delivered ✨</span>
+                                <!-- Success Badge with Animation -->
+                                <div style="display: inline-block; background: linear-gradient(135deg, rgba(16,185,129,0.9) 0%, rgba(5,150,105,0.9) 100%); backdrop-filter: blur(20px); padding: 12px 35px; border-radius: 50px; margin-bottom: 30px; border: 2px solid rgba(255,255,255,0.4); box-shadow: 0 8px 30px rgba(16,185,129,0.4), inset 0 1px 0 rgba(255,255,255,0.3); position: relative; overflow: hidden;">
+                                    <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shimmer 2s infinite;"></div>
+                                    <span style="font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2); position: relative; z-index: 2;">🎉 MISSION ACCOMPLISHED 🎉</span>
                                 </div>
                                 
+<<<<<<< HEAD
                                 <!-- Profile Picture with Success Badge -->
                                 <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 30px;">
                                     <div style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.5); box-shadow: 0 15px 45px rgba(0,0,0,0.3), inset 0 2px 0 rgba(255,255,255,0.4); overflow: hidden;">
@@ -274,14 +319,34 @@ app.post('/api/contact', async (req, res) => {
                                     <div style="position: absolute; bottom: -5px; right: -5px; width: 40px; height: 40px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; border: 3px solid white; box-shadow: 0 4px 15px rgba(16,185,129,0.4);">
                                         🎆
                                     </div>
+=======
+                                <!-- Epic Dual Image Success Display -->
+                                <div style="position: relative; margin: 0 auto 40px; width: 150px; height: 150px;">
+                                    <!-- Main Profile Picture with Success Glow -->
+                                    <div style="width: 120px; height: 120px; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%); border-radius: 50%; margin: 0; display: flex; align-items: center; justify-content: center; border: 4px solid rgba(255,255,255,0.5); box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 2px 0 rgba(255,255,255,0.4); overflow: hidden; position: relative; animation: pulse 2s ease-in-out infinite;">
+                                        <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Potharaju" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; position: absolute; top: 0; left: 0; filter: brightness(1.2) contrast(1.1) saturate(1.1);" />
+                                        <div style="position: absolute; inset: 0; background: linear-gradient(45deg, rgba(78,205,196,0.15) 0%, rgba(68,160,141,0.15) 100%); border-radius: 50%; pointer-events: none;"></div>
+                                    </div>
+                                    
+                                    <!-- Success Checkmark -->
+                                    <div style="position: absolute; top: 5px; right: 5px; width: 35px; height: 35px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(245,158,11,0.5); animation: bounce 1s ease-in-out infinite; color: white; font-weight: bold;">✓</div>
+>>>>>>> 90a293d (updated5)
                                 </div>
                                 
-                                <!-- Personalized Title -->
-                                <h1 style="margin: 0 0 20px 0; font-size: 36px; font-weight: 800; text-shadow: 0 3px 15px rgba(0,0,0,0.3); line-height: 1.2;">
-                                    Thank You, ${name}!
-                                </h1>
-                                <p style="margin: 0 0 10px 0; font-size: 20px; opacity: 0.95; font-weight: 400;">Your message has reached me successfully</p>
-                                <p style="margin: 0; font-size: 16px; opacity: 0.8; font-weight: 300;">I'll get back to you very soon!</p>
+                                <!-- Ultra-Stylish Success Title -->
+                                <div style="background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%); backdrop-filter: blur(25px); padding: 35px; border-radius: 25px; border: 2px solid rgba(255,255,255,0.4); margin-bottom: 20px; position: relative; overflow: hidden;">
+                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(16,185,129,0.1), rgba(59,130,246,0.1), rgba(168,85,247,0.1)); opacity: 0.5;"></div>
+                                    <div style="position: relative; z-index: 2; text-align: center;">
+                                        <h1 style="margin: 0 0 20px 0; font-size: 48px; font-weight: 900; text-shadow: 0 4px 25px rgba(0,0,0,0.5); line-height: 1.1; background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #fef3c7 100%); -webkit-background-clip: text; background-clip: text; animation: glow 2s ease-in-out infinite alternate;">
+                                            🎊 BOOM! ${name}! 🎊
+                                        </h1>
+                                        <div style="background: linear-gradient(135deg, rgba(16,185,129,0.9), rgba(5,150,105,0.9)); padding: 15px 25px; border-radius: 50px; margin: 15px 0; box-shadow: 0 8px 25px rgba(16,185,129,0.4); position: relative; overflow: hidden;">
+                                            <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); animation: shimmer 2s infinite;"></div>
+                                            <p style="margin: 0; font-size: 22px; color: white; font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,0.3); position: relative; z-index: 2;">🚀 MESSAGE SUCCESSFULLY LAUNCHED! 🚀</p>
+                                        </div>
+                                        <p style="margin: 0; font-size: 20px; opacity: 0.95; font-weight: 600; text-shadow: 0 2px 12px rgba(0,0,0,0.4); color: white;">Your epic project inquiry just landed in my VIP inbox! 💫</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -292,8 +357,16 @@ app.post('/api/contact', async (req, res) => {
                                 <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 20px; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 8px 25px rgba(16,185,129,0.4), inset 0 1px 0 rgba(255,255,255,0.2); transform: rotate(3deg);">
                                     ✅
                                 </div>
-                                <h2 style="color: #1f2937; margin: 0 0 15px 0; font-size: 28px; font-weight: 700;">Message Successfully Sent!</h2>
-                                <p style="color: #6b7280; font-size: 18px; line-height: 1.6; margin: 0; max-width: 500px; margin: 0 auto;">I'm thrilled to hear from you and excited about the possibility of working together.</p>
+                                <div style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); padding: 4px; border-radius: 20px; margin-bottom: 20px; position: relative; overflow: hidden;">
+                                    <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 3s infinite;"></div>
+                                    <div style="background: white; padding: 30px; border-radius: 16px; position: relative; z-index: 2;">
+                                        <h2 style="color: transparent; margin: 0 0 25px 0; font-size: 36px; font-weight: 900; background: linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b); -webkit-background-clip: text; background-clip: text; text-align: center; animation: pulse 2s ease-in-out infinite;">⚡ MISSION STATUS: LEGENDARY SUCCESS! ⚡</h2>
+                                        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 50%, #fecaca 100%); padding: 25px; border-radius: 20px; border: 3px solid #f59e0b; margin-top: 15px; position: relative; overflow: hidden;">
+                                            <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%); border-radius: 50%;"></div>
+                                            <p style="color: #92400e; font-size: 22px; line-height: 1.8; margin: 0; max-width: 550px; margin: 0 auto; font-weight: 700; text-align: center; position: relative; z-index: 2;">🎯 INCREDIBLE! Your message just crashed into my priority inbox like a shooting star! I'm absolutely ELECTRIFIED and ready to transform your vision into digital magic! ✨🔥</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             
                             <!-- About Me Section -->
@@ -421,6 +494,7 @@ app.post('/api/contact', async (req, res) => {
                         <div style="background: linear-gradient(135deg, #1f2937 0%, #111827 100%); padding: 40px; text-align: center; color: white; position: relative; overflow: hidden;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #4ecdc4, #44a08d, #667eea, #764ba2);"></div>
                             
+<<<<<<< HEAD
                             <!-- Enhanced Profile Section -->
                             <div style="margin-bottom: 30px;">
                                 <div style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; border: 4px solid rgba(78,205,196,0.5); box-shadow: 0 8px 30px rgba(78,205,196,0.3); overflow: hidden; position: relative;">
@@ -430,6 +504,23 @@ app.post('/api/contact', async (req, res) => {
                                 
                                 <h4 style="margin: 0 0 10px 0; font-size: 26px; font-weight: 900; background: linear-gradient(135deg, #4ecdc4, #44a08d, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 2px 10px rgba(78,205,196,0.3);">
                                     Srinath Potharaju
+=======
+                            <div style="margin-bottom: 20px;">
+                                <!-- Premium Footer: Profile + Logo Combo -->
+                                <div style="position: relative; margin: 0 auto 25px; width: 90px; height: 90px;">
+                                    <!-- Profile Picture -->
+                                    <div style="width: 70px; height: 70px; border-radius: 50%; margin: 0; overflow: hidden; border: 3px solid rgba(78,205,196,0.7); box-shadow: 0 6px 25px rgba(78,205,196,0.4), inset 0 2px 0 rgba(255,255,255,0.2); position: relative; animation: glow 2s ease-in-out infinite alternate;">
+                                        <img src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1732779542/srinath_jqnfqm.jpg" alt="Srinath Potharaju" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) contrast(1.05);" />
+                                        <div style="position: absolute; inset: 0; background: linear-gradient(45deg, rgba(78,205,196,0.1) 0%, rgba(68,160,141,0.1) 100%); pointer-events: none;"></div>
+                                    </div>
+                                    <!-- Logo Badge -->
+                                    <div style="position: absolute; bottom: -8px; right: -8px; width: 35px; height: 35px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius: 50%; border: 2px solid rgba(78,205,196,0.8); box-shadow: 0 3px 10px rgba(0,0,0,0.2); overflow: hidden; animation: bounce 2s ease-in-out infinite;">
+                                        <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+                                    </div>
+                                </div>
+                                <h4 style="margin: 0 0 8px 0; font-size: 22px; font-weight: 800; background: linear-gradient(135deg, #4ecdc4, #44a08d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                                    🚀 Srinath Potharaju
+>>>>>>> 90a293d (updated5)
                                 </h4>
                                 <p style="margin: 0 0 15px 0; color: #e5e7eb; font-size: 18px; font-weight: 600;">
                                     Full Stack Web Developer & Tech Innovator
