@@ -418,20 +418,39 @@ function initContactForm() {
         console.log('✅ Showing success notification...');
         
         if (emailNotification) {
-            // Update notification content
+            // Update notification content with animated mail effect
             const titleElement = emailNotification.querySelector('.notification-text h4');
             const messageElement = emailNotification.querySelector('.notification-text p');
             
-            if (titleElement) titleElement.textContent = '🎉 Message Sent!';
-            if (messageElement) messageElement.textContent = message || 'Your message has been delivered successfully!';
+            // Create animated mail icon
+            if (titleElement) {
+                titleElement.innerHTML = `
+                    <span class="mail-animation">
+                        <span class="mail-icon">📧</span>
+                        <span class="mail-trail">✨</span>
+                    </span>
+                    <span class="success-text">Message Delivered!</span>
+                `;
+            }
+            
+            if (messageElement) {
+                messageElement.innerHTML = `
+                    <span class="success-message">Your message has been sent successfully!</span>
+                    <br>
+                    <span class="thanks-text">Thank you for reaching out - I'll get back to you soon! 🚀</span>
+                `;
+            }
             
             emailNotification.classList.remove('error');
             emailNotification.classList.add('show', 'success');
             
-            // Auto hide after 5 seconds
+            // Add CSS animation styles dynamically
+            addSuccessAnimationStyles();
+            
+            // Auto hide after 6 seconds
             setTimeout(() => {
                 hideEmailNotification();
-            }, 5000);
+            }, 6000);
         }
     }
     
@@ -443,8 +462,22 @@ function initContactForm() {
             const titleElement = emailNotification.querySelector('.notification-text h4');
             const messageElement = emailNotification.querySelector('.notification-text p');
             
-            if (titleElement) titleElement.textContent = '❌ Error Occurred';
-            if (messageElement) messageElement.textContent = message || 'Failed to send message. Please try again.';
+            if (titleElement) {
+                titleElement.innerHTML = `
+                    <span class="error-animation">
+                        <span class="error-icon">⚠️</span>
+                    </span>
+                    <span class="error-text">Sending Failed</span>
+                `;
+            }
+            
+            if (messageElement) {
+                messageElement.innerHTML = `
+                    <span class="error-message">${message || 'Failed to send message. Please try again.'}</span>
+                    <br>
+                    <span class="retry-text">Please check your connection and try again 🔄</span>
+                `;
+            }
             
             emailNotification.classList.remove('success');
             emailNotification.classList.add('show', 'error');
@@ -454,6 +487,143 @@ function initContactForm() {
                 hideEmailNotification();
             }, 7000);
         }
+    }
+    
+    // Add success animation styles dynamically
+    function addSuccessAnimationStyles() {
+        // Check if styles already exist
+        if (document.getElementById('success-animation-styles')) return;
+        
+        const style = document.createElement('style');
+        style.id = 'success-animation-styles';
+        style.textContent = `
+            .mail-animation {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                margin-right: 10px;
+                animation: mailSendAnimation 2s ease-in-out;
+            }
+            
+            .mail-icon {
+                font-size: 1.2em;
+                animation: mailBounce 1.5s ease-in-out infinite;
+                display: inline-block;
+            }
+            
+            .mail-trail {
+                font-size: 0.9em;
+                animation: trailSparkle 1s ease-in-out infinite;
+                display: inline-block;
+            }
+            
+            .success-text {
+                background: linear-gradient(45deg, #10b981, #059669);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                font-weight: 600;
+                animation: textGlow 2s ease-in-out;
+            }
+            
+            .success-message {
+                color: #047857;
+                font-weight: 500;
+                animation: slideInUp 0.8s ease-out;
+            }
+            
+            .thanks-text {
+                color: #065f46;
+                font-size: 0.9em;
+                opacity: 0.9;
+                animation: fadeInDelay 1.2s ease-out;
+            }
+            
+            .error-animation {
+                display: inline-flex;
+                align-items: center;
+                margin-right: 10px;
+            }
+            
+            .error-icon {
+                font-size: 1.2em;
+                animation: errorShake 0.8s ease-in-out;
+                display: inline-block;
+            }
+            
+            .error-text {
+                color: #dc2626;
+                font-weight: 600;
+            }
+            
+            .error-message {
+                color: #b91c1c;
+                font-weight: 500;
+            }
+            
+            .retry-text {
+                color: #7f1d1d;
+                font-size: 0.9em;
+                opacity: 0.8;
+            }
+            
+            /* Keyframe animations */
+            @keyframes mailSendAnimation {
+                0% { transform: translateX(-20px); opacity: 0; }
+                50% { transform: translateX(0); opacity: 1; }
+                100% { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes mailBounce {
+                0%, 100% { transform: translateY(0) rotate(0deg); }
+                25% { transform: translateY(-3px) rotate(2deg); }
+                75% { transform: translateY(-1px) rotate(-1deg); }
+            }
+            
+            @keyframes trailSparkle {
+                0%, 100% { opacity: 0.3; transform: scale(0.8); }
+                50% { opacity: 1; transform: scale(1.2); }
+            }
+            
+            @keyframes textGlow {
+                0% { text-shadow: 0 0 5px rgba(16, 185, 129, 0.3); }
+                50% { text-shadow: 0 0 15px rgba(16, 185, 129, 0.6), 0 0 25px rgba(16, 185, 129, 0.3); }
+                100% { text-shadow: 0 0 5px rgba(16, 185, 129, 0.2); }
+            }
+            
+            @keyframes slideInUp {
+                0% { transform: translateY(10px); opacity: 0; }
+                100% { transform: translateY(0); opacity: 1; }
+            }
+            
+            @keyframes fadeInDelay {
+                0% { opacity: 0; }
+                60% { opacity: 0; }
+                100% { opacity: 0.9; }
+            }
+            
+            @keyframes errorShake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+                20%, 40%, 60%, 80% { transform: translateX(3px); }
+            }
+            
+            /* Enhanced notification styles */
+            #email-notification.success .notification-content {
+                background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+                border-left: 4px solid #10b981;
+                box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+            }
+            
+            #email-notification.error .notification-content {
+                background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+                border-left: 4px solid #dc2626;
+                box-shadow: 0 4px 20px rgba(220, 38, 38, 0.15);
+            }
+        `;
+        
+        document.head.appendChild(style);
+        console.log('✨ Success animation styles added');
     }
     
     // Make hide function global so it can be called from HTML
