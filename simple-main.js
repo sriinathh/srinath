@@ -346,7 +346,7 @@ function initContactForm() {
             // Determine the correct API URL
             const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
                 ? '/api/contact'  // Local development
-                : 'https://srinath-potharaju.onrender.com/api/contact';  // Production
+                : `${window.location.protocol}//${window.location.host}/api/contact`;  // Production
             
             console.log('🌐 Using API URL:', apiUrl);
             
@@ -359,7 +359,18 @@ function initContactForm() {
                 body: JSON.stringify(data)
             });
             
-            const result = await response.json();
+            // Check if response is JSON
+            const contentType = response.headers.get('content-type');
+            let result;
+            
+            if (contentType && contentType.includes('application/json')) {
+                result = await response.json();
+            } else {
+                // Handle non-JSON responses (like 404 HTML pages)
+                const text = await response.text();
+                console.error('❌ Non-JSON response:', response.status, text);
+                throw new Error(`Server error (${response.status}): Unable to reach contact API. Please try again later.`);
+            }
             
             if (response.ok && result.success) {
                 console.log('✅ Email sent successfully!');
