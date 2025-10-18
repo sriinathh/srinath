@@ -41,7 +41,7 @@ let transporter;
 // Try Gmail first, fallback to SendGrid if available
 if (process.env.SENDGRID_API_KEY) {
     // SendGrid configuration (recommended for production)
-    transporter = nodemailer.createTransporter({
+    transporter = nodemailer.createTransport({
         service: 'SendGrid',
         auth: {
             user: 'apikey',
@@ -51,7 +51,7 @@ if (process.env.SENDGRID_API_KEY) {
     console.log('📧 Using SendGrid for email delivery');
 } else {
     // Gmail configuration (fallback)
-    transporter = nodemailer.createTransporter({
+    transporter = nodemailer.createTransport({
         service: 'gmail',
         host: 'smtp.gmail.com',
         port: 465,
