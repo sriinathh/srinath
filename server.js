@@ -8,15 +8,11 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Validate environment variables
-if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('❌ Missing EMAIL_USER or EMAIL_PASS in .env file');
-    console.log('Please check your .env file and make sure both EMAIL_USER and EMAIL_PASS are set');
-    process.exit(1);
-}
-
-console.log(`📧 Email configured for: ${process.env.EMAIL_USER}`);
-console.log(`📧 App password length: ${process.env.EMAIL_PASS?.length || 0} characters`);
+// Gmail SMTP Configuration for reliable email delivery
+console.log('⚙️ Using Gmail SMTP for reliable email delivery');
+console.log('📧 Contact form emails will be forwarded to: sri.nxth@yahoo.com');
+console.log(`📧 Email configured for sending from: nithiinsrinu@gmail.com`);
+console.log(`📧 Emails will be delivered to: sri.nxth@yahoo.com`);
 
 // Middleware
 app.use(cors());
@@ -26,15 +22,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files (your portfolio)
 app.use(express.static(path.join(__dirname)));
 
-// Nodemailer configuration for Gmail
+// Nodemailer configuration using Gmail SMTP
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
     port: 587,
     secure: false,
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: 'nithiinsrinu@gmail.com',
+        pass: 'iqfdigdzybcsvgig'
     },
     tls: {
         rejectUnauthorized: false
@@ -74,8 +70,8 @@ app.post('/api/contact', async (req, res) => {
 
         // Email to Srinath (portfolio owner) - Ultra Stylish Version
         const ownerMailOptions = {
-            from: `"🚀 Portfolio Notification" <${process.env.EMAIL_USER}>`,
-            to: 'nithiinsrinu@gmail.com',
+            from: `"🚀 Portfolio Notification" <nithiinsrinu@gmail.com>`,
+            to: 'sri.nxth@yahoo.com',
             subject: `POTHARAJU SRINATH: New Client Inquiry - ${subject}`,
             html: `
                 <!DOCTYPE html>
@@ -110,20 +106,11 @@ app.post('/api/contact', async (req, res) => {
                                 <div style="display: inline-block; background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 25px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.3);">
                                     <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">🔥 Priority Contact</span>
                                 </div>
-                                
-<<<<<<< HEAD
                                 <!-- Profile Picture -->
                                 <div style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 25px; border: 4px solid rgba(255,255,255,0.4); box-shadow: 0 12px 40px rgba(0,0,0,0.2), inset 0 2px 0 rgba(255,255,255,0.3); overflow: hidden; position: relative;">
                                     <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Potharaju - Full Stack Developer" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) contrast(1.1);">
                                     <div style="position: absolute; top: -2px; right: -2px; width: 25px; height: 25px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
                                         ✓
-=======
-                                <!-- Dual Image Display: Logo + Profile -->
-                                
-                                    <!-- Logo Badge -->
-                                    <div style="position: absolute; bottom: -5px; right: -5px; width: 45px; height: 45px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius: 50%; border: 3px solid rgba(255,255,255,0.9); box-shadow: 0 4px 15px rgba(0,0,0,0.2); overflow: hidden; animation: pulse 2s ease-in-out infinite;">
-                                        <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
->>>>>>> 90a293d (updated5)
                                     </div>
                                 </div>
                                 
@@ -309,8 +296,6 @@ app.post('/api/contact', async (req, res) => {
                                     <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shimmer 2s infinite;"></div>
                                     <span style="font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2); position: relative; z-index: 2;">🎉 MISSION ACCOMPLISHED 🎉</span>
                                 </div>
-                                
-<<<<<<< HEAD
                                 <!-- Profile Picture with Success Badge -->
                                 <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 30px;">
                                     <div style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.5); box-shadow: 0 15px 45px rgba(0,0,0,0.3), inset 0 2px 0 rgba(255,255,255,0.4); overflow: hidden;">
@@ -319,18 +304,6 @@ app.post('/api/contact', async (req, res) => {
                                     <div style="position: absolute; bottom: -5px; right: -5px; width: 40px; height: 40px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; border: 3px solid white; box-shadow: 0 4px 15px rgba(16,185,129,0.4);">
                                         🎆
                                     </div>
-=======
-                                <!-- Epic Dual Image Success Display -->
-                                <div style="position: relative; margin: 0 auto 40px; width: 150px; height: 150px;">
-                                    <!-- Main Profile Picture with Success Glow -->
-                                    <div style="width: 120px; height: 120px; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%); border-radius: 50%; margin: 0; display: flex; align-items: center; justify-content: center; border: 4px solid rgba(255,255,255,0.5); box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 2px 0 rgba(255,255,255,0.4); overflow: hidden; position: relative; animation: pulse 2s ease-in-out infinite;">
-                                        <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Potharaju" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; position: absolute; top: 0; left: 0; filter: brightness(1.2) contrast(1.1) saturate(1.1);" />
-                                        <div style="position: absolute; inset: 0; background: linear-gradient(45deg, rgba(78,205,196,0.15) 0%, rgba(68,160,141,0.15) 100%); border-radius: 50%; pointer-events: none;"></div>
-                                    </div>
-                                    
-                                    <!-- Success Checkmark -->
-                                    <div style="position: absolute; top: 5px; right: 5px; width: 35px; height: 35px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 15px rgba(245,158,11,0.5); animation: bounce 1s ease-in-out infinite; color: white; font-weight: bold;">✓</div>
->>>>>>> 90a293d (updated5)
                                 </div>
                                 
                                 <!-- Ultra-Stylish Success Title -->
@@ -493,10 +466,8 @@ app.post('/api/contact', async (req, res) => {
                         <!-- Premium Footer -->
                         <div style="background: linear-gradient(135deg, #1f2937 0%, #111827 100%); padding: 40px; text-align: center; color: white; position: relative; overflow: hidden;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #4ecdc4, #44a08d, #667eea, #764ba2);"></div>
-                            
-<<<<<<< HEAD
-                            <!-- Enhanced Profile Section -->
-                            <div style="margin-bottom: 30px;">
+                            <div style="margin-bottom: 20px;">
+                                <!-- Profile Section -->
                                 <div style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; border: 4px solid rgba(78,205,196,0.5); box-shadow: 0 8px 30px rgba(78,205,196,0.3); overflow: hidden; position: relative;">
                                     <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Potharaju" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1);">
                                     <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(78,205,196,0.1), rgba(68,160,141,0.1)); border-radius: 50%;"></div>
@@ -504,23 +475,6 @@ app.post('/api/contact', async (req, res) => {
                                 
                                 <h4 style="margin: 0 0 10px 0; font-size: 26px; font-weight: 900; background: linear-gradient(135deg, #4ecdc4, #44a08d, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 2px 10px rgba(78,205,196,0.3);">
                                     Srinath Potharaju
-=======
-                            <div style="margin-bottom: 20px;">
-                                <!-- Premium Footer: Profile + Logo Combo -->
-                                <div style="position: relative; margin: 0 auto 25px; width: 90px; height: 90px;">
-                                    <!-- Profile Picture -->
-                                    <div style="width: 70px; height: 70px; border-radius: 50%; margin: 0; overflow: hidden; border: 3px solid rgba(78,205,196,0.7); box-shadow: 0 6px 25px rgba(78,205,196,0.4), inset 0 2px 0 rgba(255,255,255,0.2); position: relative; animation: glow 2s ease-in-out infinite alternate;">
-                                        <img src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1732779542/srinath_jqnfqm.jpg" alt="Srinath Potharaju" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) contrast(1.05);" />
-                                        <div style="position: absolute; inset: 0; background: linear-gradient(45deg, rgba(78,205,196,0.1) 0%, rgba(68,160,141,0.1) 100%); pointer-events: none;"></div>
-                                    </div>
-                                    <!-- Logo Badge -->
-                                    <div style="position: absolute; bottom: -8px; right: -8px; width: 35px; height: 35px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius: 50%; border: 2px solid rgba(78,205,196,0.8); box-shadow: 0 3px 10px rgba(0,0,0,0.2); overflow: hidden; animation: bounce 2s ease-in-out infinite;">
-                                        <img src="https://res.cloudinary.com/dfeyi8eom/image/upload/picture_fnjvkj.jpg" alt="Srinath Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
-                                    </div>
-                                </div>
-                                <h4 style="margin: 0 0 8px 0; font-size: 22px; font-weight: 800; background: linear-gradient(135deg, #4ecdc4, #44a08d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                                    🚀 Srinath Potharaju
->>>>>>> 90a293d (updated5)
                                 </h4>
                                 <p style="margin: 0 0 15px 0; color: #e5e7eb; font-size: 18px; font-weight: 600;">
                                     Full Stack Web Developer & Tech Innovator
