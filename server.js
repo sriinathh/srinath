@@ -35,20 +35,44 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files (your portfolio)
 app.use(express.static(path.join(__dirname)));
 
-// Nodemailer configuration using Gmail SMTP
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-        user: 'nithiinsrinu@gmail.com',
-        pass: 'iqfdigdzybcsvgig'
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
+// Email configuration with multiple providers
+let transporter;
+
+// Try Gmail first, fallback to SendGrid if available
+if (process.env.SENDGRID_API_KEY) {
+    // SendGrid configuration (recommended for production)
+    transporter = nodemailer.createTransporter({
+        service: 'SendGrid',
+        auth: {
+            user: 'apikey',
+            pass: process.env.SENDGRID_API_KEY
+        }
+    });
+    console.log('📧 Using SendGrid for email delivery');
+} else {
+    // Gmail configuration (fallback)
+    transporter = nodemailer.createTransporter({
+        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'nithiinsrinu@gmail.com',
+            pass: 'iqfdigdzybcsvgig'
+        },
+        tls: {
+            rejectUnauthorized: false,
+            ciphers: 'SSLv3'
+        },
+        connectionTimeout: 60000,
+        greetingTimeout: 30000,
+        socketTimeout: 75000,
+        pool: true,
+        maxConnections: 5,
+        maxMessages: 10
+    });
+    console.log('📧 Using Gmail for email delivery');
+}
 
 // Verify email configuration
 transporter.verify((error, success) => {

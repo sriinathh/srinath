@@ -131,6 +131,12 @@ function updateActiveNavLink(navLinks) {
     
     navLinks.forEach(function(link) {
         const targetId = link.getAttribute('href');
+        
+        // Skip if targetId is empty or invalid
+        if (!targetId || targetId === '#' || !targetId.startsWith('#') || targetId.length <= 1) {
+            return;
+        }
+        
         const targetSection = document.querySelector(targetId);
         
         if (targetSection) {
