@@ -591,6 +591,25 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+// GET handler for contact endpoint (provides API info)
+app.get('/api/contact', (req, res) => {
+    res.json({
+        message: 'Contact API Endpoint',
+        description: 'This endpoint accepts POST requests for contact form submissions',
+        method: 'POST',
+        contentType: 'application/json',
+        requiredFields: ['name', 'email', 'subject', 'message'],
+        example: {
+            name: 'John Doe',
+            email: 'john@example.com',
+            subject: 'Project Inquiry',
+            message: 'Hello, I would like to discuss a project with you.'
+        },
+        status: 'API is operational',
+        timestamp: new Date().toISOString()
+    });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
     res.json({ 
