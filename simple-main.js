@@ -343,11 +343,13 @@ function initContactForm() {
         submitBtn.disabled = true;
         
         try {
-            // Determine the correct API URL
-            const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-                ? '/api/contact'  // Local development
-                : `${window.location.protocol}//${window.location.host}/api/contact`;  // Production
-            
+            // Determine the correct API URL (works for file://, localhost, and production)
+            const API_BASE = window.CONTACT_API_URL
+                || (window.location.protocol.startsWith('http') && window.location.host
+                    ? `${window.location.protocol}//${window.location.host}`
+                    : 'http://localhost:5000');
+            const apiUrl = `${API_BASE}/api/contact`;
+
             console.log('🌐 Using API URL:', apiUrl);
             
             // Send to backend API

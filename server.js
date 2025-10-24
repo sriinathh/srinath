@@ -19,7 +19,9 @@ const corsOptions = {
     origin: [
         'http://localhost:3000',
         'http://localhost:5000', 
+        'http://localhost:5500',
         'http://127.0.0.1:3000',
+        'http://127.0.0.1:5500',
         'https://srinath-potharaju.onrender.com',
         'https://srinath-potharaju.vercel.app'
     ],
@@ -29,6 +31,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
