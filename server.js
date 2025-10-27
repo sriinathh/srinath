@@ -8,11 +8,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Gmail SMTP Configuration for reliable email delivery
-console.log('⚙️ Using Gmail SMTP for reliable email delivery');
-console.log('📧 Contact form emails will be forwarded to: psrinath821@gmail.com');
-console.log(`📧 Email configured for sending from: psrinath821@gmail.com`);
-console.log(`📧 Emails will be delivered to: psrinath821@gmail.com`);
+// Mail config summary
+const USING_SENDGRID = !!process.env.SENDGRID_API_KEY;
+const FROM_EMAIL = process.env.SENDGRID_FROM || process.env.EMAIL_USER || 'psrinath821@gmail.com';
+console.log(USING_SENDGRID ? '📧 Using SendGrid for email delivery' : '📧 Using Gmail for email delivery');
+console.log(`📨 From address: ${FROM_EMAIL}`);
+console.log('📬 Contact form will forward messages to: psrinath821@gmail.com');
 
 // Middleware with CORS configuration
 const corsOptions = {
@@ -110,7 +111,7 @@ app.post('/api/contact', async (req, res) => {
 
         // Email to Srinath (portfolio owner) - Ultra Stylish Version
         const ownerMailOptions = {
-            from: `"🚀 Portfolio Notification" <psrinath821@gmail.com>`,
+            from: `"🚀 Portfolio Notification" <${FROM_EMAIL}>`,
             to: 'psrinath821@gmail.com',
             subject: `POTHARAJU SRINATH: New Client Inquiry - ${subject}`,
             html: `
@@ -285,7 +286,7 @@ app.post('/api/contact', async (req, res) => {
 
         // Confirmation email to the user - Ultra Stylish Version
         const userMailOptions = {
-            from: `"🚀 Srinath Potharaju" <psrinath821@gmail.com>`,
+            from: `"🚀 Srinath Potharaju" <${FROM_EMAIL}>`,
             to: email,
             subject: ` Thank you ${name.split(' ')[0]}! Your message is on its way to me`,
             html: `
@@ -586,7 +587,10 @@ app.post('/api/contact', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('❌ Contact form error:', error);
+        console.error('❌ Contact form error:', error && (error.stack || error.message || error));
+        if (error && error.response && error.response.body) {
+            console.error('❌ Mail provider response:', error.response.body);
+        }
         res.status(500).json({
             success: false,
             message: 'Failed to send message. Please try again later.'
