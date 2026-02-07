@@ -869,14 +869,9 @@ body {
 
 .hero-subtitle {
   font-size: 1.5rem;
-  background: linear-gradient(135deg, #fd79a8, #fdcb6e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  animation: subtitleGlow 3s ease-in-out infinite alternate;
+  font-weight: 500;
 }
 
 .hero-description {
@@ -1095,17 +1090,6 @@ body {
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes subtitleGlow {
-  0%, 100% {
-    filter: brightness(1) saturate(1);
-    text-shadow: 0 0 5px rgba(253, 121, 168, 0.3);
-  }
-  50% {
-    filter: brightness(1.1) saturate(1.2);
-    text-shadow: 0 0 15px rgba(253, 203, 110, 0.5);
   }
 }
 
@@ -4189,8 +4173,8 @@ section {
   }
   
   .image-container {
-    width: 270px;
-    height: 260px;
+    width: 280px;
+    height: 280px;
   }
   
   /* Skills Section Responsive */
