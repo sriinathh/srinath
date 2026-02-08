@@ -313,8 +313,10 @@ function initContactForm() {
     
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
-        console.log('📬 Form submitted, sending to backend...');
+        e.stopPropagation();
+
+        console.log('📬 Form submitted, preventing default action...');
+        console.log('🚫 Prevented default form submission - no redirect should happen');
         
         // Get form data
         const formData = new FormData(contactForm);
@@ -351,6 +353,8 @@ function initContactForm() {
             const apiUrl = `${API_BASE}/api/contact`;
 
             console.log('🌐 Using API URL:', apiUrl);
+            console.log('📍 Current location:', window.location.protocol, window.location.host);
+            console.log('🔗 CONTACT_API_URL:', window.CONTACT_API_URL);
             
             // Send to backend API
             const response = await fetch(apiUrl, {
@@ -376,20 +380,26 @@ function initContactForm() {
             
             if (response.ok && result.success) {
                 console.log('✅ Email sent successfully!');
-                
+
+                // Store form data for the thank you page
+                localStorage.setItem('contact_name', data.name);
+                localStorage.setItem('contact_email', data.email);
+                localStorage.setItem('contact_subject', data.subject);
+                localStorage.setItem('contact_message', data.message);
+
                 // Start flying letter animation if element exists
                 if (flyingLetter) {
                     startFlyingLetterAnimation();
                 }
-                
+
                 // Show success state
                 setTimeout(() => {
                     submitBtn.classList.remove('loading');
                     submitBtn.classList.add('success');
-                    
+
                     // Show success notification
                     showSuccessNotification(result.message);
-                    
+
                     // Reset form after delay
                     setTimeout(() => {
                         contactForm.reset();
@@ -397,7 +407,7 @@ function initContactForm() {
                         submitBtn.disabled = false;
                         console.log('✅ Form reset complete');
                     }, 3000);
-                    
+
                 }, flyingLetter ? 1000 : 100);
                 
             } else {
