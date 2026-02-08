@@ -349,7 +349,7 @@ function initContactForm() {
             const API_BASE = window.CONTACT_API_URL
                 || (window.location.protocol.startsWith('http') && window.location.host
                     ? `${window.location.protocol}//${window.location.host}`
-                    : 'http://localhost:5000');
+                    : 'https://srinath-potharaju-zsv4.onrender.com');
             const apiUrl = `${API_BASE}/api/contact`;
 
             console.log('🌐 Using API URL:', apiUrl);
