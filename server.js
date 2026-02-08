@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { Resend } = require('resend');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -27,6 +28,14 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
+
+// Serve static files
+app.use(express.static(__dirname));
+
+// Serve portfolio.html at root
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'portfolio.html'));
+});
 
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
