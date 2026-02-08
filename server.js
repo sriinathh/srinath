@@ -19,7 +19,7 @@ app.use(cors({
     'http://localhost:5500',
     'http://127.0.0.1:3000',
     'http://127.0.0.1:5500',
-    'https://srinath-potharaju.onrender.com',
+    'https://srinath-potharaju-zsv4.onrender.com',
     'https://srinath-potharaju.vercel.app',
     'file://' // Allow file:// protocol for local development
   ],
